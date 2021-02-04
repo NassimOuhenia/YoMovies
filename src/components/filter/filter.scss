@@ -1,0 +1,64 @@
+$size: 40px;
+
+.categories {
+  opacity: 0;
+  transition: 0.8s ease-in-out;
+  height: 0;
+
+  &.active {
+    opacity: 1;
+    height: auto;
+  }
+}
+
+.btn-filter {
+  width: $size;
+  height: $size;
+  background: transparent;
+  position: relative;
+  top: 5px;
+  border: none;
+
+  $offsetY: 7px;
+  $rotate: -180;
+
+  .filters {
+    color: #007bff;
+    position: absolute;
+    left: 40px;
+    bottom: 20px;
+  }
+  .bar {
+    position: absolute;
+    left: 0;
+
+    width: 100%;
+    height: 2px;
+    background: #007bff;
+
+    transition: transform 1s ease;
+    &.bar--1 {
+      transform: translateY(-$offsetY);
+    }
+    &.bar--2 {
+      transform: translateY($offsetY);
+    }
+  }
+  &:hover {
+    .bar--1 {
+      transform: translateY(-$offsetY) rotate(-180deg);
+    }
+    .bar--2 {
+      transform: translateY($offsetY) rotate(-180deg);
+    }
+
+  }
+  &.active {
+    .bar--1 {
+      transform: translateY(0) rotate(135deg);
+    }
+    .bar--2 {
+      transform: translateY(0) rotate(225deg);
+    }
+  }
+}
